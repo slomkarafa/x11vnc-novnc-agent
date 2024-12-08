@@ -5,6 +5,8 @@ Docker image to extend your environment with VNC functionality
 It is build based on [x11vnc](https://github.com/LibVNC/x11vnc) as vnc server
 and [noVNC](https://github.com/novnc/noVNC) as web VNC client
 
+latest docker image: `slomkarafa/x11vnc-novnc-agent:0.0.1`
+
 ## Usage
 
 This image can be used as sidecar to your k8s app. For example if you are running k8s on the edge, and you have some
@@ -13,7 +15,7 @@ Simply add sidecar container:
 
 ```yaml
         - name: vnc
-          image: slomkarafa/x11vnc-novnc-agent:0.1.0
+          image: slomkarafa/x11vnc-novnc-agent:0.0.1
           ports:
             - name: vnc
               containerPort: 6080
