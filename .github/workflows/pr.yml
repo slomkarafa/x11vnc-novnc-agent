@@ -1,12 +1,12 @@
 name: Publish Snapshot
 
-on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - scripts/**
-      - Dockerfile
+#on:
+#  pull_request:
+#    branches:
+#      - main
+#    paths:
+#      - scripts/**
+#      - Dockerfile
 
 jobs:
   build:
