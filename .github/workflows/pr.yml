@@ -1,12 +1,12 @@
 name: Publish Snapshot
 
-#on:
-#  pull_request:
-#    branches:
-#      - main
-#    paths:
-#      - scripts/**
-#      - Dockerfile
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - scripts/**
+      - Dockerfile
 
 jobs:
   build:
@@ -15,6 +15,15 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Calculate new version tag (dry-run)
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: "main"
+          tag_prefix: v
+          dry_run: 'true'
 
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
@@ -34,5 +43,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: slomkarafa/x11vnc-novnc-agent:${{ steps.tag_version.outputs.new_version }}
           labels: ${{ steps.meta.outputs.labels }}

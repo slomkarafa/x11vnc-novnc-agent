@@ -2,11 +2,11 @@ name: Publish Release
 
 on:
   push:
-#    branches:
-#      - main
-#    paths:
-#      - scripts/**
-#      - Dockerfile
+    branches:
+      - main
+    paths:
+      - scripts/**
+      - Dockerfile
 
 jobs:
   build:
