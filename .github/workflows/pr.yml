@@ -43,5 +43,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: slomkarafa/x11vnc-novnc-agent:${{ steps.tag_version.outputs.new_version }}
+          tags: slomkarafa/x11vnc-novnc-agent:${{ steps.tag_version.outputs.new_version }}-${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
